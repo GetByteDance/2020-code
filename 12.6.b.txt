@@ -1,0 +1,111 @@
+#define _CRT_SECURE_NO_WARNINGS 1
+#include<stdio.h>
+
+int God(int x, int y)
+{
+	int min= 0;
+	int i = 0;
+	min = Min(x, y);
+	if (x <= 0 || y <= 0)
+	{
+		return -1;
+	}
+	for (i = min; i >= 1; i--)
+	{
+		if (x%i == 0 && y%i == 0)
+		{
+			return i;
+		}
+	}
+}
+int main()
+{
+	int x = 0;
+	int y = 0;
+	while (1)
+	{
+		printf("请输入两个数（正整数）：");
+		scanf("%d,%d", &x, &y);
+		int ret = God(x, y);
+		if (ret != -1)
+			printf("这两个整数的最大公约数是 %d \n", ret);
+		else
+			printf("输入错误，请输入正整数\n");
+	}
+	return 0;
+}
+int God(int x, int y)
+{
+	if (x <= 0 || y <= 0)
+		return -1;
+	if (x%y != 0)
+	{
+		return God(y, x%y);
+	}
+	else
+		return y;
+}
+int God(int x, int y)
+{
+	if (x <= 0 || y <= 0)
+		return -1;
+	while (x%y != 0)
+	{
+		int m = x%y;
+		x = y;
+		y = m;
+	}
+	return y;
+}
+int God(int x, int y)
+{
+	if (x <= 0 || y <= 0)
+		return -1;
+	if (x == y)
+		return y;
+	if (x > y)
+		return God(y, x - y);
+	if (x < y)
+		return God(x, y - x);
+}
+int main()
+{
+	int x = 0;
+	int y = 0;
+	while (1)
+	{
+		printf("请输入两个数（正整数）：");
+		scanf("%d,%d", &x, &y);
+		int ret = God(x, y);
+		if (ret != -1)
+			printf("这两个整数的最大公约数是 %d \n", ret);
+		else
+			printf("输入错误，请输入正整数\n");
+	}
+	return 0;
+}
+int Sum()
+{
+	int x = 1;
+	int i = 1;
+	float y = 0;
+	y = 5 * x + 1;
+	while (i < 5)
+	{
+		y = y * 5 / 4 + 1;
+		i++;
+		if (y != (int)y)
+		{
+			x++;
+			y = 5 * x + 1;
+			i = 1;
+		}
+	}
+	return (int)y;
+
+}
+int main()
+{
+	printf("y = %d\n", Sum());
+	return 0;
+}

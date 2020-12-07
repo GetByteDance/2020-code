@@ -1,0 +1,31 @@
+#define _CRT_SECURE_NO_WARNINGS 1
+#include<stdio.h>
+int LCM(int i, int j)
+{
+	int lcm = 0;
+	if (i <= 0 || j <= 0)
+		return -1;
+	for (lcm = 1; lcm <= i*j; lcm++)
+	{
+		if (lcm%i == 0 && lcm%j == 0)
+			return lcm;	
+	}
+
+}
+int main()
+{
+	int x = 0;
+	int y = 0;
+	while (1)
+	{
+		printf("请输入两个数字：");
+		scanf("%d,%d", &x, &y);
+		int ret = LCM(x, y);
+		if (ret == -1)
+			printf("输入错误\n");
+		else
+			printf("两数的最小公倍数是：%d\n", ret);
+	}
+		return 0;
+	
+}
