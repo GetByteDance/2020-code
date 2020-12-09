@@ -1,0 +1,23 @@
+#include<stdio.h>
+int main()
+{
+	int a[100], i, j, t, n;
+	scanf("%d", &n);//输入数字的数量
+	for (i = 1; i <= n; i++)
+		scanf("%d", &a[i]);//一个萝卜一个坑
+	for (i = 1; i <= n - 1; i++)//确定趟数
+	{
+		for (j = 1; j <= n - i; j++)//每一趟要相互比较的次数
+		{
+			if (a[j] < a[j + 1])//比较相邻两数的大小，看看是否要交换位置
+			{
+				t = a[j];
+				a[j] = a[j + 1];
+				a[j + 1] = t;
+			}
+		}
+	}
+	for (i = n; i >= 1; i--)//打印出结果
+		printf("%d ", a[i]);
+	return 0;
+}
